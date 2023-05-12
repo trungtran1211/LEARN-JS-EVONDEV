@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./style.css">
+    <title>Accordion</title>
+</head>
+<body>
+    <style>
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+      .modal-content {
+        background-color: white;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        position: relative;
+        z-index: 10;
+        padding: 30px;
+      }
+      .modal-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+      }
+      .modal-main {
+        overscroll-behavior-y: contain;
+      }
+      .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 150px;
+        padding: 10px 0;
+        border: none;
+        outline: none;
+        border-radius: 15px;
+      }
+    </style>
+    <button class="button">Open Modal</button>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
