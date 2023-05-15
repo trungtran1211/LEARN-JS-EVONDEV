@@ -1,32 +1,21 @@
-const button = document.querySelector('.button');
-
-const teamplate = `
-<div class="modal">
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-    <span class="modal-close">
-        <i class="fa-duotone fa-circle-xmark"></i>
-    </span>
-    <div class="modal-main">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-        maiores eligendi deleniti ipsa quae nam sunt quasi nisi, dignissimos
-        eaque aliquam minus. Eius perferendis, voluptates totam iure minus
-        consequuntur est?
-    </div>
-    </div>
-</div>
-`
-
-button.addEventListener('click', () => {
-    document.body.insertAdjacentHTML("beforeend", teamplate);
-});
-
-document.body.addEventListener('click', (e) => {
-    const xmark = e.target.matches(".fa-circle-xmark");
-    if (xmark) {
-        const modal = e.target.parentNode.parentNode.parentNode;
-        modal.parentNode.removeChild(modal);
-    }else if (e.target.parentNode.matches('.modal')) {
-        e.target.parentNode.parentNode.removeChild(e.target.parentNode);
-    }
+window.addEventListener("load", function() {
+    const menu = [...document.querySelectorAll(".menu-link")];
+    menu.forEach((item) => item.addEventListener("mouseenter", (e) => {
+        const linkhoverDiv = document.createElement("div");
+        linkhoverDiv.className = "line-effect";
+        document.body.appendChild(linkhoverDiv);
+        const cords = e.target.getBoundingClientRect();
+        console.log(cords)
+        const {left, top, height, width} = cords;
+        const heightItemMenu = 5;
+        linkhoverDiv.style.left = `${left}px`;
+        linkhoverDiv.style.width = `${width}px`;
+        linkhoverDiv.style.top = `${top + height + heightItemMenu}px`;
+    }));
+    menu.forEach((item) => item.addEventListener("mouseleave", (e) => {
+        const lineEffect = document.querySelector(".line-effect");
+        console.log(lineEffect);
+        if (!lineEffect) return;
+        lineEffect.parentNode.removeChild(lineEffect);
+    }));
 });

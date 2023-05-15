@@ -67,7 +67,7 @@ body {
   position: relative;
 }
 .line-effect {
-  width: 0;
+  width: 0px;
   height: 2px;
   background-color: #3d6ef7;
   position: fixed;
