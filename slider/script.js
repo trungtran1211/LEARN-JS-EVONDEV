@@ -10,14 +10,13 @@ window.addEventListener('load', function(){
     const sliderLength = sliderItems.length;
     const sliderItemWidth = sliderItems[1].offsetWidth;
     nextBtn.addEventListener("click", function() {
-        [...dotItems].forEach((item) => {item.classList.remove("active")});
-        item.classList.add("active");
         handleChangeSlider(1);
+        
     });
 
     prevBtn.addEventListener("click", function() {
         handleChangeSlider(-1);
-    });
+    }); 
 
     [...dotItems].forEach((item) => {
         item.addEventListener("click", (e) => {
@@ -48,6 +47,8 @@ window.addEventListener('load', function(){
             positionX = positionX + sliderItemWidth; 
             sliderMain.style.transform = `translateX(${positionX}px)`;
         }
+        [...dotItems].forEach((item) => {item.classList.remove("active");});
+        dotItems[index].classList.add("active");
     };
 
 });

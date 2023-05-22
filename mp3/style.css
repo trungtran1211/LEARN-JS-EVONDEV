@@ -58,7 +58,9 @@ body {
   max-width: 300px;
   margin: 0 auto 30px;
 }
-
+#progress-bar {
+  cursor: pointer;
+}
 .player-media {
   position: relative;
   width: 150px;

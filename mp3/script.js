@@ -1,9 +1,10 @@
 window.addEventListener('load', function() {
     const song = document.querySelector('#song');
     const playerImage = document.querySelector('.player-image');
-    const progressBar = document.querySelector('.progress-bar');
-    const duration = document.querySelector('.player-duration');
-    const remaining = document.querySelector('.player-remaining');
+    const musicName = document.querySelector('.music-name');
+    const progressBar = document.querySelector('#progress-bar');
+    const playerDuration = document.querySelector('.player-duration');
+    const playerRemaining = document.querySelector('.player-remaining');
     const playerPlay = document.querySelector('.player-play');
     const playerPrev = document.querySelector('.player-prev');
     const playerNext = document.querySelector('.player-next');
@@ -12,7 +13,6 @@ window.addEventListener('load', function() {
     songStatus = true;
     const list = ["holo", "home", "spark", "summer"];
     index = 0;
-    const durationTime = song.duration;
 
    // random list music 
     function shuffleArray(array) {
@@ -29,26 +29,31 @@ window.addEventListener('load', function() {
     }
     return array;
     }
-    // Random mảng gốc
-    const listNew = shuffleArray(list); 
 
     playerRandom.addEventListener('click', () => {
         handleRandomPlay();
     })
     
-    handleRandomPlay = () => {
+    let handleRandomPlay = () => {
+        const listNew = shuffleArray(list); 
         song.setAttribute('src', `./files/${listNew[index]}.mp3`);
         songStatus = true;
+        musicName.textContent = listNew[index];
         handleMusicPlay();
-        playerRandom.classList.add('player-active');
+        playerRandom.classList.toggle('player-active');
         playerRandom.removeEventListener('click', () => {
             handleRandomPlay();
         })
     };
     // end random
-
+    musicName.textContent = list[index];
+    
+   
     playerNext.addEventListener('click', () => {handleClickPlayer(1)});
     playerPrev.addEventListener('click', () => {handleClickPlayer(-1)});
+
+    song.addEventListener('ended', () => {handleClickPlayer(1)});
+
     handleClickPlayer = (num) => {
         if(num === 1) {
             if (index < list.length - 1) {
@@ -59,6 +64,7 @@ window.addEventListener('load', function() {
             song.setAttribute('src', `./files/${list[index]}.mp3`);
             songStatus = true;
             handleMusicPlay();
+            musicName.textContent = list[index];
         }else if(num === -1) {
             if (index > 0) {
                 console.log(index--);
@@ -68,6 +74,7 @@ window.addEventListener('load', function() {
             song.setAttribute('src', `./files/${list[index]}.mp3`);
             songStatus = true;
             handleMusicPlay();
+            musicName.textContent = list[index];
         }
     };
     playerPlay.addEventListener('click', () => {
@@ -86,4 +93,25 @@ window.addEventListener('load', function() {
             songStatus = true;
         }
     };
+    progressBar.addEventListener('change', () => {
+        song.currentTime = progressBar.value;
+    });
+    displayTimer = () => {
+        const duration = song.duration;
+        const currentTime = song.currentTime;
+        playerDuration.textContent = formatNumber(duration);
+        playerRemaining.textContent = formatNumber(currentTime);
+        progressBar.max = Math.floor(duration);
+        progressBar.value = Math.ceil(currentTime);
+    };
+    
+    formatNumber = (number) => {
+        const minutes = Math.floor(Math.ceil(number) / 60) ;
+        const seconds = Math.floor(number - minutes * 60);
+        return `${minutes}:${seconds < 10 ? `0`+seconds : seconds}`;
+    };
+    
+    setInterval(() => {
+        displayTimer();
+    }, 500);
 });
