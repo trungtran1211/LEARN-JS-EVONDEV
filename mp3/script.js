@@ -48,7 +48,6 @@ window.addEventListener('load', function() {
     // end random
     musicName.textContent = list[index];
     
-   
     playerNext.addEventListener('click', () => {handleClickPlayer(1)});
     playerPrev.addEventListener('click', () => {handleClickPlayer(-1)});
 
@@ -93,9 +92,11 @@ window.addEventListener('load', function() {
             songStatus = true;
         }
     };
+    
     progressBar.addEventListener('change', () => {
         song.currentTime = progressBar.value;
     });
+
     displayTimer = () => {
         const duration = song.duration;
         const currentTime = song.currentTime;
