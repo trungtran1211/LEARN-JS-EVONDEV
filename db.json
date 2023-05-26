@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "image": "êrt",
+      "title": "ểtrt",
+      "author": "ểtr",
+      "rating": "ểt",
+      "price": "ểtrt",
+      "bestSeller": "on",
+      "buyAmount": "0",
+      "id": 1
+    },
+    {
+      "image": "ểtt",
+      "title": "wr",
+      "author": "ưerw",
+      "rating": "ưerw",
+      "price": "tyte",
+      "bestSeller": "on",
+      "buyAmount": "0",
+      "id": 2
+    },
+    {
+      "image": "adas",
+      "title": "ád",
+      "author": "dsfds",
+      "rating": "sdf",
+      "price": "sdsdf",
+      "bestSeller": true,
+      "buyAmount": "0",
+      "id": 3
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

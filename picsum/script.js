@@ -16,8 +16,8 @@ function imagesList(url) {
 }
 async function picsum (page = 1) {
     imageLoader.style.display = 'block';
-    const reponse = await fetch(`${api}&page=${page}`);
-    imagesArr = await reponse.json();
+    const response = await fetch(`${api}&page=${page}`);
+    imagesArr = await response.json();
     if(imagesArr.length > 0 && Array.isArray(imagesArr))  {
         imageLoader.style.display = 'none';
         imagesArr.map((item) => {
